@@ -1,0 +1,1 @@
+Dir[File.dirname(__FILE__) + '/lighthouse_export/*.rb'].each {|file| require file }
