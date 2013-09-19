@@ -74,6 +74,7 @@ e = LighthouseExport::Jira::Converter.new(project,
     :bucket => 'bucket-to-upload-lighthouse-attachments', # defaults to 'lighthouse-attachments'
     :access_key_id => access_key,
     :secret_access_key => secret
-  }
+  },
+  :github_url => 'https://github.com/myaccount/myproject' # if present, adds a link to the commit on Github to commit comments
 )
 ```

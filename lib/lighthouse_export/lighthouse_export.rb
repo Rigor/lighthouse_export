@@ -22,7 +22,8 @@ module LighthouseExport
         @translator = Translator.new(
           :priority_map => options[:priority_map],
           :user_map => options[:user_map],
-          :s3 => options[:s3]
+          :s3 => options[:s3],
+          :github_url => options[:github_url]
         )
       end
 
@@ -98,6 +99,7 @@ module LighthouseExport
         @user_map = options[:user_map]
         raise 'Provide a user map!' unless @user_map
         @s3 = RigorS3.new(options[:s3])
+        @github_url = options[:github_url]
       end
 
       def default_priorities
@@ -305,9 +307,9 @@ module LighthouseExport
           commit_comment = v['body'] && v['body'].include?('(from [')
           next if (!commit_comment && v['diffable_attributes'].any?) || v['version'] == 1
           if v['body']
-            if commit_comment
-              github_url = "https://github.com/Rigor/my.rigor.com/commit/#{v['body'].split("/changesets/").last}"
-              comment_body = "#{v['body']}\n\"View on Github\":#{github_url}"
+            if commit_comment && @github_url
+              github_link = "#{@github_url}/commit/#{v['body'].split("/changesets/").last}"
+              comment_body = "#{v['body']}\n\"View on Github\":#{github_link}"
             else
               comment_body = v['body']
             end
