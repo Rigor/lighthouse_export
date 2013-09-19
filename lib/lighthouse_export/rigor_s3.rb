@@ -2,11 +2,11 @@ class RigorS3
   
   def initialize options={}
     @s3 = connect!(options[:access_key_id], options[:secret_access_key])
-    @buckets = @s3.buckets
+    @lighthouse_bucket = options[:bucket] || 'lighthouse-attachments'
   end
   
   def bucket
-    @buckets['lighthouse-attachments']
+    @s3.buckets[@lighthouse_bucket]
   end
   
   def server
