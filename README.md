@@ -59,8 +59,8 @@ e.convert
 ```ruby
 e = LighthouseExport::Jira::Converter.new(project,
   :export_directory => export_path,
-  :result_directory => 'path/to/save/converted_file',
-  :result_filename => 'name_for_converted_file.json',
+  :result_directory => 'path/to/save/converted_file', # defaults to script directory
+  :result_filename => 'name_for_converted_file.json', # default: "#{Time.now}_lighthouse_export_jira_converter.json"
   :priority_map => {
     # translate lighthouse priorities to jira priorities
     "High" => 'Major',
@@ -69,6 +69,7 @@ e = LighthouseExport::Jira::Converter.new(project,
   },
   :user_map => users,
   :s3 => {
+    :bucket => 'bucket-to-upload-lighthouse-attachments', # defaults to 'lighthouse-attachments'
     :access_key_id => access_key,
     :secret_access_key => secret
   }
