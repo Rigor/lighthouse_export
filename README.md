@@ -6,6 +6,8 @@ It assumes that the project does NOT already exist in JIRA and that users DO exi
 
 It also uses S3 to upload Lighthouse attachments for reference in the imported JIRA tickets.
 
+*Have improvements? Submit a pull request!*
+
 ### Usage
 
 Setup project information in the export script:
