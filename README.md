@@ -78,3 +78,7 @@ e = LighthouseExport::Jira::Converter.new(project,
   :github_url => 'https://github.com/myaccount/myproject' # if present, adds a link to the commit on Github to commit comments
 )
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Rigor/lighthouse_export/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
